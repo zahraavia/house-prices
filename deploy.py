@@ -78,6 +78,8 @@ LotArea = st.slider('What is your preferable lot size?',int(X.LotArea.min()),int
 #input data 4
 LotFrontage = st.slider('How many feet of street connected to the property do you want??',int(X.LotFrontage.min()),int(X.LotFrontage.max()),int(X.LotFrontage.mean()))
 
+st.write('If you have picked a foundation as your preferable foundation, please leave the other foundations as "No"')
+
 #input data 5
 Foundation_BrkTil = st.selectbox(
     'Do you want brick and tile as a foundation for your house?',
@@ -144,8 +146,6 @@ if Foundation_Wood=="Yes":
     Foundation_Wood=1
 else:
     Foundation_Wood=0
-
-st.write('If you have picked a foundation as your preferable foundation, please leave the other foundations as "No"')
 
 ## Create linear regression object
 from sklearn import linear_model
