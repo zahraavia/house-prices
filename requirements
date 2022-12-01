@@ -3,3 +3,4 @@ numpy
 streamlit
 scikit-learn
 linear_model
+train_test_split
