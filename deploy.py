@@ -147,9 +147,7 @@ if Foundation_Wood=="Yes":
 else:
     Foundation_Wood=0
 
-
 st.write('If you have picked a foundation as your preferable foundation, please leave the other foundations as "No"')
-
 
 ## Create linear regression object
 from sklearn import linear_model
