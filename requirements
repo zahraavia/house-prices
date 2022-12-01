@@ -2,4 +2,4 @@ pandas
 numpy
 streamlit
 scikit-learn
-sklearn.model_selection.train_test_split
+train_test_split
