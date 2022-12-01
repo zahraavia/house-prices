@@ -3,7 +3,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-import sklearn
 
 #load the dataset
 train = pd.read_csv("train.csv")
