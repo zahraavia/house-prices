@@ -1,5 +1,5 @@
 pandas
-pyplot 
+matplotlib
 numpy
 streamlit
 scikit-learn
