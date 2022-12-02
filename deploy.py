@@ -37,7 +37,12 @@ OverallCond = st.selectbox(
 
 # input data 2
 MSSubClass = st.selectbox('What type of dwelling involved in the sale do you prefer?',
-    ('1-STORY 1946 & NEWER ALL STYLES','1-STORY 1945 & OLDER','1-STORY W/FINISHED ATTIC ALL AGES','1-1/2 STORY - UNFINISHED ALL AGES','1-1/2 STORY FINISHED ALL AGES','2-STORY 1946 & NEWER','2-STORY 1945 & OLDER','2-1/2 STORY ALL AGES','SPLIT OR MULTI-LEVEL','SPLIT FOYER','DUPLEX - ALL STYLES AND AGES','1-STORY PUD (Planned Unit Development) - 1946 & NEWER','1-1/2 STORY PUD - ALL AGES','2-STORY PUD - 1946 & NEWER','PUD - MULTILEVEL - INCL SPLIT LEV/FOYER',))
+    ('1-STORY 1946 & NEWER ALL STYLES','1-STORY 1945 & OLDER','1-STORY W/FINISHED ATTIC ALL AGES',
+    '1-1/2 STORY - UNFINISHED ALL AGES','1-1/2 STORY FINISHED ALL AGES','2-STORY 1946 & NEWER',
+    '2-STORY 1945 & OLDER','2-1/2 STORY ALL AGES','SPLIT OR MULTI-LEVEL','SPLIT FOYER','DUPLEX - ALL STYLES AND AGES',
+    '1-STORY PUD (Planned Unit Development) - 1946 & NEWER','1-1/2 STORY PUD - ALL AGES',
+    '2-STORY PUD - 1946 & NEWER','PUD - MULTILEVEL - INCL SPLIT LEV/FOYER',))
+
 'You selected:', MSSubClass
 
 if MSSubClass=='1-STORY 1946 & NEWER ALL STYLES':
@@ -49,29 +54,29 @@ elif MSSubClass=='1-STORY W/FINISHED ATTIC ALL AGES':
 elif MSSubClass=='1-1/2 STORY - UNFINISHED ALL AGES':
     MSSubClass=45
 elif MSSubClass=='1-1/2 STORY FINISHED ALL AGES':
-    MSSubClass==50
+    MSSubClass=50
 elif MSSubClass=='2-STORY 1946 & NEWER':
-    MSSubClass==60
+    MSSubClass=60
 elif MSSubClass=='2-STORY 1945 & OLDER':
-    MSSubClass==70
+    MSSubClass=70
 elif MSSubClass=='2-1/2 STORY ALL AGES':
-    MSSubClass==75
+    MSSubClass=75
 elif MSSubClass=='SPLIT OR MULTI-LEVEL':
-    MSSubClass==80
+    MSSubClass=80
 elif MSSubClass=='SPLIT FOYER':
-    MSSubClass==85
+    MSSubClass=85
 elif MSSubClass=='DUPLEX - ALL STYLES AND AGES':
-    MSSubClass==90
+    MSSubClass=90
 elif MSSubClass=='1-STORY PUD (Planned Unit Development) - 1946 & NEWER':
-    MSSubClass==120
+    MSSubClass=120
 elif MSSubClass=='1-1/2 STORY PUD - ALL AGES':
-    MSSubClass==150
+    MSSubClass=150
 elif MSSubClass=='2-STORY PUD - 1946 & NEWER':
-    MSSubClass==160
+    MSSubClass=160
 elif MSSubClass=='PUD - MULTILEVEL - INCL SPLIT LEV/FOYER':
-    MSSubClass==180
+    MSSubClass=180
 else:
-    MSSubClass==190
+    MSSubClass=190
 #input data 3
 LotArea = st.slider('What is your preferable lot size?',int(X.LotArea.min()),int(X.LotArea.max()),int(X.LotArea.mean()))
 
