@@ -1,41 +1,42 @@
-###### MODEL DEPLOYMENT#####
+###### MODEL DEPLOYMENT: HOUSE PRICES ######
 
 import pandas as pd
 import numpy as np
 import streamlit as st
 
-#load the dataset
+#Load the Dataset
 train = pd.read_csv("train.csv")
 
-#pick variables
+#Pick Variables
 train_a = train[['SalePrice','LotArea', 'LotFrontage','OverallCond','Foundation', 'MSSubClass']].copy() ##create a new dataframe for selected variables
-# ## One Hot Encoding, Fill NA
+
+#One Hot Encoding, Fill NA
 for i in train_a.columns[train_a.isnull().any(axis=0)]:     
     train_a['LotFrontage'].fillna(train_a[i].mean(),inplace=True) ## fill na with mean 
     
 train_a = pd.get_dummies(train_a)
 train_a.info()
 
-## Defining feature matrix(X) dan response vector(Y)
+#Defining Feature Matrix(X) and Response Vector(Y)
 
 X = train_a.drop('SalePrice',axis=1)
 Y = train_a['SalePrice']
 
-## Splitting X and Y into training and testing data
+#Splitting X and Y into training and testing data
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.4,
                                                     random_state=1)
 
-#title of local web
-st.title("Predict Your House's Price Here!")
+#Title of Web
+st.title("Predict Your Dream House's Price Here!")
 
-#input data 1
+#Input data 1
 OverallCond = st.selectbox(
     'From a scale of 1-10, what condition do you want for your house? (1 being "very poor", and 10 being "very excellent")',
     (1,2,3,4,5,6,7,8,9,10))
 'You selected:', OverallCond
 
-# input data 2
+#Input data 2
 MSSubClass = st.selectbox('What type of dwelling involved in the sale do you prefer?',
     ('1-STORY 1946 & NEWER ALL STYLES','1-STORY 1945 & OLDER','1-STORY W/FINISHED ATTIC ALL AGES',
     '1-1/2 STORY - UNFINISHED ALL AGES','1-1/2 STORY FINISHED ALL AGES','2-STORY 1946 & NEWER',
@@ -77,15 +78,16 @@ elif MSSubClass=='PUD - MULTILEVEL - INCL SPLIT LEV/FOYER':
     MSSubClass=180
 else:
     MSSubClass=190
-#input data 3
+    
+#Input data 3
 LotArea = st.slider('What is your preferable lot size?',int(X.LotArea.min()),int(X.LotArea.max()),int(X.LotArea.mean()))
 
-#input data 4
-LotFrontage = st.slider('How many feet of street connected to the property do you want??',int(X.LotFrontage.min()),int(X.LotFrontage.max()),int(X.LotFrontage.mean()))
+#Input data 4
+LotFrontage = st.slider('How many feet of street connected to the property do you want?',int(X.LotFrontage.min()),int(X.LotFrontage.max()),int(X.LotFrontage.mean()))
 
-st.write('If you have picked a foundation as your preferable foundation, please leave the other foundations as "No"')
+st.write('If you have picked "Yes" at a type of foundation that represent your house, please leave the other foundations as "No"')
 
-#input data 5
+#Input data 5
 Foundation_BrkTil = st.selectbox(
     'Do you want brick and tile as a foundation for your house?',
      ('No','Yes'))
@@ -97,7 +99,7 @@ if Foundation_BrkTil=="Yes":
 else:
     Foundation_BrkTil=0
 
-#input data 6
+#Input data 6
 Foundation_CBlock = st.selectbox(
     'Do you want cinder block as a foundation for your house?',
       ('No','Yes'))
@@ -108,7 +110,7 @@ if Foundation_CBlock=="Yes":
 else:
     Foundation_CBlock=0
 
-#input data 7
+#Input data 7
 Foundation_PConc = st.selectbox(
     'Do you want poured contrete as a foundation for your house?',
       ('No','Yes'))
@@ -119,7 +121,7 @@ if Foundation_PConc=="Yes":
 else:
     Foundation_PConc=0
 
-#input data 8
+#Input data 8
 Foundation_Slab = st.selectbox(
     'Do you want slab as a foundation for your house?',
       ('No','Yes'))
@@ -130,7 +132,7 @@ if Foundation_Slab=="Yes":
 else:
     Foundation_Slab=0
 
-#input data 9
+#Input data 9
 Foundation_Stone = st.selectbox(
     'Do you want stone as a foundation for your house?',
       ('No','Yes'))
@@ -141,7 +143,7 @@ if Foundation_Stone=="Yes":
 else:
     Foundation_Stone=0
 
-#input data 10
+#Input data 10
 Foundation_Wood = st.selectbox(
     'Do you want wood as a foundation for your house?',
       ('No','Yes'))
@@ -152,16 +154,15 @@ if Foundation_Wood=="Yes":
 else:
     Foundation_Wood=0
 
-## Create linear regression object
+#Create linear regression object
 from sklearn import linear_model
 reg = linear_model.LinearRegression()
 
-
-## Train the model using the training sets
+#Train the model using the training sets
 reg.fit(X_train, Y_train)
 
-#output data
+#Output data
 prediction = reg.predict([[OverallCond, MSSubClass, LotArea, LotFrontage, Foundation_BrkTil, Foundation_CBlock, Foundation_PConc,Foundation_Slab, Foundation_Stone,Foundation_Wood]])[0]
 
 if st.button('Predict'):
-    st.header('Your estimated house price will be $ {}'.format(int(prediction)))
+    st.header('Your estimated dream house price will be $ {}'.format(int(prediction)))
