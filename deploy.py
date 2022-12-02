@@ -37,7 +37,7 @@ OverallCond = st.selectbox(
 'You selected:', OverallCond
 
 #Input data 2
-MSSubClass = st.selectbox('What type of dwelling involved in the sale do you prefer?',
+MSSubClass = st.selectbox('What type of house do you prefer?',
     ('1-STORY 1946 & NEWER ALL STYLES','1-STORY 1945 & OLDER','1-STORY W/FINISHED ATTIC ALL AGES',
     '1-1/2 STORY - UNFINISHED ALL AGES','1-1/2 STORY FINISHED ALL AGES','2-STORY 1946 & NEWER',
     '2-STORY 1945 & OLDER','2-1/2 STORY ALL AGES','SPLIT OR MULTI-LEVEL','SPLIT FOYER','DUPLEX - ALL STYLES AND AGES',
